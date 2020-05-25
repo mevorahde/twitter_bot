@@ -44,9 +44,9 @@ class Twitter_Bot:
             for link in links:
                 bot.get(link)
             try:
-                # 'liking' a tweet, doesn't work. Need to find the latest element/XPATH for the heart.
-                bot.find_elements(By.XPATH, '//*[@data-testid="like"]//a[@dir="ltr"]')
-                time.sleep(10)
+                time.sleep(2)
+                bot.execute_script('window.scrollTo(0,100)')
+                bot.find_element_by_xpath('//div[@aria-label="Like"]').click()
             except Exception as ex:
                 time.sleep(60)
 
